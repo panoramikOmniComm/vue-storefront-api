@@ -21,10 +21,7 @@ module.exports = ({ config, db }) => {
         intent: 'sale',
         payer: { payment_method: 'paypal' },
         transactions: req.body.transactions,
-        redirect_urls: {
-          return_url: 'http://localhost:3000', // TODO: move to local.json
-          cancel_url: 'http://localhost:3000'
-        }
+        redirect_urls: config.extensions.paypal.redirect_urls
       },
       json: true
     }, function (err, response) {
